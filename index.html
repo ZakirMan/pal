@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAL</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(reg => console.log('Service Worker Registered', reg))
+      .catch(err => console.log('Service Worker Failed', err));
+  }
+</script>
+<body>
+  <div class="tab-container">
+    <div class="tabs">
+      <button class="tab-button active" data-tab="1">Before</button>
+      <button class="tab-button" data-tab="2">In flight</button>
+      <button class="tab-button" data-tab="3">After</button>
+    </div>
+    <div class="tab-content active" id="tab-1">
+      <ul>
+        <li data-text-1="Kazakh" 
+        data-text-2="Russian" 
+        data-text-3="English">Boarding</li>
+
+        <li data-text-1="This is the first text for Item 2 in Tab 1" 
+        data-text-2="This is the second text for Item 2 in Tab 1" 
+        data-text-3="This is the second text for Item 2 in Tab 1">Boarding | Refueling</li>
+
+        <li data-text-1="This is the first text for Item 3 in Tab 1" 
+        data-text-2="This is the second text for Item 3 in Tab 1" 
+        data-text-3="This is the second text for Item 2 in Tab 1">Recount passenger</li>
+      </ul>
+    </div>
+    <div class="tab-content" id="tab-2">
+      <ul>
+        <li data-text-1="This is the first text for Item 1 in Tab 2" data-text-2="This is the second text for Item 1 in Tab 2" data-text-3="This is the second text for Item 2 in Tab 1">Item 1</li>
+        <li data-text-1="This is the first text for Item 2 in Tab 2" data-text-2="This is the second text for Item 2 in Tab 2" data-text-3="This is the second text for Item 2 in Tab 1">Item 2</li>
+        <li data-text-1="This is the first text for Item 3 in Tab 2" data-text-2="This is the second text for Item 3 in Tab 2" data-text-3="This is the second text for Item 2 in Tab 1">Item 3</li>
+      </ul>
+    </div>
+    <div class="tab-content" id="tab-3">
+      <!-- Поле для ввода города -->
+  <input type="text" id="city-search" placeholder="Enter destination..." />
+
+  <!-- Список вариантов для автодополнения -->
+  <ul id="city-list" class="hidden">
+    <!-- Автозаполнение появится здесь -->
+  </ul>
+
+  <!-- Модальное окно для выбранного города -->
+  <div id="city-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2 id="city-name">City Name</h2>
+      <p id="city-time">Current time: </p>
+      <div id="city-texts">
+        <!-- Тексты для выбранного города -->
+      </div>
+    </div>
+  </div>
+
+
+      <ul>
+        <li data-text-1="This is the first text for Item 1 in Tab 3" data-text-2="This is the second text for Item 1 in Tab 3" data-text-3="This is the second text for Item 2 in Tab 1">Item 1</li>
+        <li data-text-1="This is the first text for Item 2 in Tab 3" data-text-2="This is the second text for Item 2 in Tab 3" data-text-3="This is the second text for Item 2 in Tab 1">Item 2</li>
+        <li data-text-1="This is the first text for Item 3 in Tab 3" data-text-2="This is the second text for Item 3 in Tab 3" data-text-3="This is the second text for Item 2 in Tab 1">Item 3</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <p id="modal-text">Default Text</p>
+    </div>
+  </div>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
